@@ -11,10 +11,11 @@ const PlannerContent = () => {
       <tr key={item.td_seq} data-seq={item.td_seq}>
         <td>{item.td_seq}</td>
         <td>{item.td_content}</td>
-        <td>{item.td_complete ? "o" : "x"}</td>
+        <td>X</td>
       </tr>
     );
   });
+
   return (
     <div className="appBodyRight">
       <div className="studyHeader">
@@ -45,7 +46,7 @@ const PlannerContent = () => {
               <th colSpan="4">JavaScript</th>
             </tr>
           </thead>
-          <tbody>{printTodoList}</tbody>
+          <tbody onClick={(e) => deleteClickHandler(e)}>{printTodoList}</tbody>
         </table>
       </div>
     </div>

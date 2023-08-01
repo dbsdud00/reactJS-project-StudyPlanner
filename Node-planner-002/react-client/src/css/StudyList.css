@@ -29,3 +29,7 @@ table tr td:last-of-type {
   cursor: pointer;
   width: 50px;
 }
+tbody {
+  height: 100%;
+  overflow: auto;
+}

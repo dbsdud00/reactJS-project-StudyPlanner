@@ -16,7 +16,9 @@ table th {
   padding: 15px 20px;
   background-color: #ebf8ed;
 }
-
+tbody {
+  overflow: auto;
+}
 table td {
   padding: 8px 10px;
   /* border: 1px solid #000; */
@@ -28,4 +30,11 @@ table tr td:first-of-type {
 table tr td:last-of-type {
   cursor: pointer;
   width: 50px;
+}
+table td.complete.yes {
+  text-decoration: none;
+}
+table td.complete.no {
+  text-decoration: line-through #ff0000;
+  background-color: #d3d3d3;
 }

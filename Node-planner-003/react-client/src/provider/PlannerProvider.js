@@ -12,6 +12,7 @@ import {
   getDate,
   setNowDate,
   todoInsert,
+  todoUpdate,
 } from "../modules/FetchModule";
 
 const PLContext = createContext();
@@ -21,7 +22,7 @@ const usePLContext = () => {
 
 const PLContextProvider = ({ children }) => {
   const [todo, setTodo] = useState({
-    td_seq: 1,
+    td_seq: 0,
     td_dtseq: 1,
     td_subject: "",
     td_content: "",
@@ -45,6 +46,10 @@ const PLContextProvider = ({ children }) => {
       const result = await getDateList();
       setDate(makeDate);
       setDateList(result);
+      const todoList = await getTodoList(makeDate.dt_seq);
+      console.log("처음 시작 date", date);
+      console.log("처음시작 todo 세팅", todoList);
+      setTodoList(todoList);
     };
     fetchDateList();
   }, []);
@@ -53,8 +58,8 @@ const PLContextProvider = ({ children }) => {
     const target = e.target;
     if (target.tagName === "LI") {
       const date_seq = target.dataset.seq;
+      const date = await getDate(date_seq);
       const todoList = await getTodoList(date_seq);
-      const date = await getDate(`/date?seq=${date_seq}`);
       console.table(todoList);
       setTodoList(todoList);
       setDate(date);
@@ -63,10 +68,16 @@ const PLContextProvider = ({ children }) => {
   });
   const insertTodoCB = useCallback(async () => {
     // const todoStr = JSON.stringify(todo);
-    setTodo({ ...todo, td_dtseq: date.dt_seq });
+    console.log("insert date", date);
+    setTodo({ ...todo, td_dtseq: Number(date.dt_seq) });
     console.log(todo);
-    await todoInsert(todo);
+    if (todo.td_seq > 0) {
+      await todoUpdate(todo);
+    } else {
+      await todoInsert(todo);
+    }
     const result = await getTodoList(date.dt_seq);
+    console.log(result);
     setTodoList(result);
   });
   const props = {

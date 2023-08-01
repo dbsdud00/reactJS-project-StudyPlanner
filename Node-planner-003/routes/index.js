@@ -82,3 +82,41 @@ router.get("/todo/insert", async (req, res) => {
   console.log("todo 만들었음");
 });
 export default router;
+
+router.get("/todo/findOne", async (req, res) => {
+  const seq = req.query.seq;
+  const list = await TODO.findOne({
+    where: { td_seq: Number(seq) },
+  });
+  return res.json(list);
+});
+router.get("/todo/delete", async (req, res) => {
+  const seq = req.query.seq;
+  try {
+    const list = await TODO.destroy({
+      where: { td_seq: Number(seq) },
+    });
+    return res.send("삭제완료");
+  } catch (error) {
+    return res.send("삭제실패");
+  }
+});
+router.get("/todo/update", async (req, res) => {
+  const seq = req.query.td_seq;
+  const subject = req.query.td_subject;
+  const content = req.query.td_content;
+  const complete = req.query.td_complete;
+
+  await TODO.update(
+    { td_subject: subject, td_content: content, td_complete: complete },
+    {
+      where: { td_seq: seq },
+    }
+  );
+  console.log("todo 수정함");
+});
+router.get("/todo/compUp", async (req, res) => {
+  const seq = req.query.td_seq;
+  const comp = req.query.td_complete;
+  await TODO.update({ td_complete: comp }, { where: { td_seq: seq } });
+});
