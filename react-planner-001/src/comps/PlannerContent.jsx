@@ -3,8 +3,6 @@ import "../css/StudyInput.css";
 import plusIcon from "../img/plus.png";
 
 const PlannerContent = (props) => {
-  // const { todo, setTodo } = props;
-
   return (
     <div className="appBodyRight">
       <div className="studyHeader">
