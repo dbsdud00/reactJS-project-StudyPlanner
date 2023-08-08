@@ -1,10 +1,13 @@
 import PlannerContent from "./PlannerContent";
 import PlannerDateList from "./PlannerDateList";
+import { useState } from "react";
 
-const PlannerBody = () => {
+const PlannerBody = (props) => {
+  const { dateList } = props;
+
   return (
     <div className="appBody">
-      <PlannerDateList />
+      <PlannerDateList dateList={dateList} />
       <PlannerContent />
     </div>
   );
