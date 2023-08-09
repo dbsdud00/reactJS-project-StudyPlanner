@@ -22,7 +22,7 @@ const normalizePort = (val) => {
 };
 
 const debug = createDebug("node-001-test:server");
-const port = normalizePort(process.env.PORT || "5000");
+const port = normalizePort(process.env.PORT || "3500");
 
 /**
  * Create HTTP server.
