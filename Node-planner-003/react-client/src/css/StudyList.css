@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+  border-top: 1px solid #000;
+  margin: 20px 0;
+  padding: 10px 15px;
+  font-size: 18px;
+  background-color: #edffef;
+  border-collapse: collapse;
+}
+table tr {
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+}
+table th {
+  text-align: left;
+  padding: 15px 20px;
+  background-color: #ebf8ed;
+}
+
+table td {
+  padding: 8px 10px;
+  /* border: 1px solid #000; */
+  margin: 0;
+}
+table tr td:first-of-type {
+  width: 50px;
+}
+table tr td:last-of-type {
+  cursor: pointer;
+  width: 50px;
+}
