@@ -6,9 +6,6 @@ import { PlannerDto } from "../data/PlannerDto";
 import { useState, useEffect } from "react";
 
 const PlannerMain = () => {
-  const [todo, setTodo] = useState(PlannerDto);
-  const [todoList, setTodoList] = useState([]);
-
   return (
     <>
       <PlannerNav />

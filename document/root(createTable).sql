@@ -25,12 +25,13 @@ VALUES ("2023-08-11"	,0);
 
 
 INSERT INTO tbl_todo (td_dtseq,td_subject,td_content,td_complete)
-VALUES (1,"JS","ㄴㄴㄴ",false);
+VALUES (1,"JS","ㄴㄴㄴ",true);
 
 
 desc tbl_todo;
 
-SELECT * FROM tbl_date;
+SELECT td_subject, count(td_seq) FROM tbl_todo
+GROUP BY td_subject;
 
 
 -- 중복제거 날짜

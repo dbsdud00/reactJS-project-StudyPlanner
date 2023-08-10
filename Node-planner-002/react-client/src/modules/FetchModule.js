@@ -14,6 +14,16 @@ export const getDateList = async () => {
     return [];
   }
 };
+export const getDate = async (url) => {
+  try {
+    const response = await fetch(url);
+    const dateList = await response.json();
+    console.table(dateList);
+    return dateList;
+  } catch (error) {
+    return [];
+  }
+};
 export const getTodoList = async (seq) => {
   const response = await fetch(`/todo?seq=${seq}`);
   const todoList = await response.json();

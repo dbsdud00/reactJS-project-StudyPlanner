@@ -1,13 +1,25 @@
 import "../css/StudyList.css";
 import "../css/StudyInput.css";
 import plusIcon from "../img/plus.png";
+import { usePLContext } from "../provider/PlannerProvider";
 
 const PlannerContent = () => {
+  const { todo, todoList, date } = usePLContext();
+
+  const printTodoList = todoList.map((item) => {
+    return (
+      <tr key={item.td_seq} data-seq={item.td_seq}>
+        <td>{item.td_seq}</td>
+        <td>{item.td_content}</td>
+        <td>{item.td_complete ? "o" : "x"}</td>
+      </tr>
+    );
+  });
   return (
     <div className="appBodyRight">
       <div className="studyHeader">
-        <h3>2023-08-05</h3>
-        <h3>80%</h3>
+        <h3>{!date[0].td_date ? "2023-01-01" : date[0].td_date}</h3>
+        <h3>{date[0].td_perf ? date[0].td_perf : 0}%</h3>
       </div>
       <div className="studyInput">
         <div className="subjectMenu">
@@ -28,14 +40,12 @@ const PlannerContent = () => {
       </div>
       <div className="studyList">
         <table>
-          <tr>
-            <th colSpan="4">JavaScript</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>프로젝트 하기</td>
-            <td>&#x2714;</td>
-          </tr>
+          <thead>
+            <tr>
+              <th colSpan="4">JavaScript</th>
+            </tr>
+          </thead>
+          <tbody>{printTodoList}</tbody>
         </table>
       </div>
     </div>
