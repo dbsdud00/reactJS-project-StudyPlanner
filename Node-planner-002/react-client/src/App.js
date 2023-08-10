@@ -1,6 +1,6 @@
 import "./css/App.css";
 import PlannerMain from "./comps/PlannerMain";
-import { PLContextProvider } from "../provider/PlannerProvider";
+import { PLContextProvider } from "./provider/PlannerProvider";
 
 function App() {
   return (

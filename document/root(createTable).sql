@@ -1,19 +1,37 @@
 CREATE DATABASE plannerDB;
 use plannerDB;
-DROP TABLE tbl_planner;
-CREATE TABLE tbl_planner (
-pl_seq	BIGINT	AUTO_INCREMENT	PRIMARY KEY,
-pl_date	VARCHAR(10)	NOT NULL	,
-pl_subject	VARCHAR(10)	NOT NULL,	
-pl_content	VARCHAR(30)	NOT NULL,	
-pl_complete	BOOLEAN	NOT NULL	
+DROP TABLE tbl_date;
+CREATE TABLE tbl_todo (
+td_seq	BIGINT	AUTO_INCREMENT	PRIMARY KEY,
+td_dtseq	BIGINT	NOT NULL	,
+td_subject	VARCHAR(10)	NOT NULL	,
+td_content	VARCHAR(30)	NOT NULL	,
+td_complete	BOOLEAN	NOT NULL	
 ) AUTO_INCREMENT=1;
-INSERT INTO tbl_planner (pl_date,pl_subject,pl_content, pl_complete )
-VALUES ("2023-08-12",	"nodeJS"	,"프로젝트3",	TRUE);
 
-desc tbl_planner;
+CREATE TABLE tbl_date (
+td_seq	BIGINT	AUTO_INCREMENT	PRIMARY KEY,
+td_date	VARCHAR(10)	NOT NULL	,
+td_perf	INT	NOT NULL	
+) AUTO_INCREMENT=1;
 
-SELECT * FROM tbl_planner;
+ALTER TABLE tbl_todo -- tbl_files TABLE 변경
+ADD CONSTRAINT F_PLANNER -- F_BBS 이름으로 제약조건 추가
+FOREIGN KEY (td_dtseq) -- 제약조건은 참조 무결성(FK) 이다.
+REFERENCES tbl_date(td_seq); -- 연결은 Table 은 tbl_bbs 이다.
+
+INSERT INTO tbl_date (td_dtseq,td_perf)
+VALUES ("2023-08-11"	,0);
+
+
+INSERT INTO tbl_todo (td_dtseq,td_subject,td_content,td_complete)
+VALUES (1,"JS","ㄴㄴㄴ",false);
+
+
+desc tbl_todo;
+
+SELECT * FROM tbl_date;
+
 
 -- 중복제거 날짜
 SELECT DISTINCT(pl_date) FROM tbl_planner;
