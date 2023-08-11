@@ -24,11 +24,11 @@ FOREIGN KEY (td_dtseq) -- 제약조건은 참조 무결성(FK) 이다.
 REFERENCES tbl_date(dt_seq); -- 연결은 Table 은 tbl_bbs 이다.
 
 INSERT INTO tbl_date (dt_date,dt_perf)
-VALUES ("2023-08-13"	,0);
+VALUES ("2023-08-10"	,0);
 
 
 INSERT INTO tbl_todo (td_dtseq,td_subject,td_content,td_complete)
-VALUES (1,"JS","eee",false);
+VALUES (4,"JS","ggg",false);
 
 desc tbl_date;
 desc tbl_todo;
@@ -36,9 +36,11 @@ desc tbl_todo;
 SELECT td_subject, COUNT(td_content) FROM tbl_todo
 GROUP BY td_subject;
 
-SELECT DISTINCT(td_subject) FROM tbl_todo
-WHERE td_dtseq = 1
-GROUP BY td_subject;
+SELECT count(td_complete) FROM tbl_todo
+WHERE td_complete = true && td_dtseq=1;
+
+SELECT count(td_seq) FROM tbl_todo
+WHERE td_dtseq=1;
 
 SELECT * FROM tbl_todo
 WHERE td_subject = "JS";

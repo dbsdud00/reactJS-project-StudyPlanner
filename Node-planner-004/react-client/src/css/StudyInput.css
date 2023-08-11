@@ -1,0 +1,57 @@
+div.studyInput {
+  border: 1px solid #000;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+div.studyInput div {
+  padding: 5px 10px;
+  /* border: 1px solid #000; */
+}
+div.studyInput .subjectMenu {
+  flex: 2;
+
+  /* background-color: #ddd; */
+}
+div.studyInput .subjectMenu input,
+div.studyInput .studyInputBox input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  border-radius: 7px;
+  transition: 0.2s;
+  border: 1px solid #b0b0b0;
+}
+div.studyInput .subjectMenu input {
+  background-color: #ebf8ed;
+}
+
+div.studyInput .studyInputBox {
+  flex: 9;
+}
+div.studyInput .studyInputBox input {
+  background-color: #d4dfe9;
+}
+div.studyInput .studyPlus {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #b0b0b0;
+  border-radius: 5px;
+  margin: 0 8px;
+  cursor: pointer;
+  background-color: #e5e5e5;
+  transition: 0.5s;
+}
+div.studyInput .studyPlus:hover {
+  background-color: #f1e1e1;
+}
+
+div.studyInput .subjectMenu input:focus,
+div.studyInput .studyInputBox input:focus {
+  border-radius: 0;
+  border: 1px solid #868686;
+  background-color: #fff3f3;
+}
