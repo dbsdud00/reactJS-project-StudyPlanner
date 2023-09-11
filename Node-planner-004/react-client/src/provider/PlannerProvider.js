@@ -70,12 +70,11 @@ const PLContextProvider = ({ children }) => {
   });
   const insertTodoCB = useCallback(async () => {
     // const todoStr = JSON.stringify(todo);
-    console.log("insert date", date);
-    const dtseq = "td_dtseq";
-    const dtDate = date.dt_seq;
-    console.log("dtDate : ", dtDate);
-    setTodo({ ...todo, [dtseq]: dtDate });
-    console.log(todo);
+    // console.log("insert date", date);
+    // let nowDate = date.dt_seq;
+    // console.log("dtDate : ", nowDate);
+    // setTodo({ ...todo, td_dtseq: nowDate });
+    console.log("insertTodoCB : ", todo);
     if (todo.td_seq > 0) {
       await todoUpdate(todo);
     } else {

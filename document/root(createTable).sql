@@ -4,6 +4,8 @@ use imageDB;
 use plannerDB;
 DROP TABLE tbl_todo;
 DROP TABLE tbl_date;
+truncate tbl_todo;
+truncate tbl_date;
 CREATE TABLE tbl_todo (
 td_seq	BIGINT	AUTO_INCREMENT	PRIMARY KEY,
 td_dtseq	BIGINT	NOT NULL	,
@@ -24,7 +26,7 @@ FOREIGN KEY (td_dtseq) -- 제약조건은 참조 무결성(FK) 이다.
 REFERENCES tbl_date(dt_seq); -- 연결은 Table 은 tbl_bbs 이다.
 
 INSERT INTO tbl_date (dt_date,dt_perf)
-VALUES ("2023-08-10"	,0);
+VALUES ("2023-09-10"	,0);
 
 
 INSERT INTO tbl_todo (td_dtseq,td_subject,td_content,td_complete)

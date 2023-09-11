@@ -19,6 +19,9 @@ const PlannerContent = () => {
     const seq = target.closest("TR").dataset.seq;
     if (target.className === "delete") {
       const result = await deleteTodo(seq);
+      const setList = await getTodoList(date.dt_seq);
+      console.log(setList);
+      setTodoList(setList);
       // alert(result);
     } else if (target.tagName === "TD") {
       const result = await findBySEQ(seq);
@@ -42,13 +45,15 @@ const PlannerContent = () => {
     setTodo({ ...todo, [name]: value });
   };
   const insertButtonClickHandler = async () => {
-    insertTodoCB();
+    await setTodo({ ...todo, td_dtseq: date.dt_seq });
+    console.log("insert버튼 누름", todo);
+    await insertTodoCB();
     const result = await getTodoList(date.dt_seq);
     console.log(result);
     setTodoList(result);
     setTodo({
       td_seq: 0,
-      td_dtseq: 1,
+      td_dtseq: 2,
       td_subject: "",
       td_content: "",
       td_complete: false,

@@ -41,7 +41,7 @@ export const todoInsert = async (todoStr) => {
   const td_subject = todoStr.td_subject;
   const td_content = todoStr.td_content;
   const td_complete = todoStr.td_complete;
-  console.log(todoStr);
+  console.log("todoInsert : ", todoStr);
   const response = await fetch(
     `/todo/insert?td_dtseq=${td_dtseq}&td_subject=${td_subject}&td_content=${td_content}&td_complete=${td_complete}`
   );
