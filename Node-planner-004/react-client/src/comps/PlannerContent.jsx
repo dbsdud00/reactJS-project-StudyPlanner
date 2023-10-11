@@ -45,13 +45,13 @@ const PlannerContent = () => {
     setTodo({ ...todo, [name]: value });
   };
   const insertButtonClickHandler = async () => {
-    await setTodo({ ...todo, td_dtseq: date.dt_seq });
+    await setTodo({ ...todo, td_dtseq: 2 });
     console.log("insert버튼 누름", todo);
     await insertTodoCB();
     const result = await getTodoList(date.dt_seq);
     console.log(result);
-    setTodoList(result);
-    setTodo({
+    await setTodoList(result);
+    await setTodo({
       td_seq: 0,
       td_dtseq: 2,
       td_subject: "",
